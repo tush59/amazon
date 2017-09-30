@@ -29,7 +29,7 @@
 * @author themattharris
 */
 
-define('TMH_INDENT', 25);
+//define('TMH_INDENT', 25);
 
 // use composers autoload if it exists, or require directly if not
 if (file_exists(__DIR__.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php')) {

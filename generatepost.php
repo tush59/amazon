@@ -59,7 +59,10 @@ echo $text . "\n";
 require 'googl/Googl.class.php';
 
 require 'tmhOAuthExample.php';
+require 'tmhOAuthExample1.php';
+
 $tmhOAuth = new tmhOAuthExample();
+$tmhOAuth1 = new tmhOAuthExample1();
 
 #
 # IMPORTANT: Please add your API key to make the tests work
@@ -157,7 +160,7 @@ if($results['status_code']==200){
     
     if($fetchtrends==1){
       //echo "<pre>"; print_r($_SESSION); die;
-      //echo "here"; die;
+      echo "here"; //die;
           $date = date("Y-m-d H:i:s");
           $currentDate = strtotime($date);
           $futureDate = $currentDate+(60*5);
@@ -208,6 +211,14 @@ if($results['status_code']==200){
     if($trends !=''){
         $code = $tmhOAuth->user_request(array(
         'url' => $tmhOAuth->url('1.1/statuses/update'),
+        'params' => array(
+          'status' =>"Check out this product at amazon @".$_REQUEST['price']." Only : ".$finalshortenedurl." ".$trends."",
+        ),
+        'method'=>'post',
+        ));
+
+    $code = $tmhOAuth1->user_request(array(
+        'url' => $tmhOAuth1->url('1.1/statuses/update'),
         'params' => array(
           'status' =>"Check out this product at amazon @".$_REQUEST['price']." Only : ".$finalshortenedurl." ".$trends."",
         ),
